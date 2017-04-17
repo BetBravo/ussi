@@ -2,9 +2,9 @@ security:
     encoders:
         FOS\UserBundle\Model\UserInterface: bcrypt
 
-    role_hierarchy:
-        ROLE_RECEPCION:   ROLE_USER
-        ROLE_MEDICO:      ROLE_RECEPCION
+    role_hierarchy:        
+        ROLE_ENFERMERIA:  ROLE_RECEPCION
+        ROLE_MEDICO:      ROLE_ENFERMERIA
         ROLE_ADMIN:       ROLE_MEDICO
         ROLE_SUPER_ADMIN: ROLE_ADMIN
 

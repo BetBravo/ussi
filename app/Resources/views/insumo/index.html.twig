@@ -1,0 +1,43 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Insumos list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nombre</th>
+                <th>Stock</th>
+                <th>Disponible</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for insumo in insumos %}
+            <tr>
+                <td><a href="{{ path('insumo_show', { 'id': insumo.id }) }}">{{ insumo.id }}</a></td>
+                <td>{{ insumo.nombre }}</td>
+                <td>{{ insumo.stock }}</td>
+                <td>{{ insumo.disponible }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('insumo_show', { 'id': insumo.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('insumo_edit', { 'id': insumo.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('insumo_new') }}">Create a new insumo</a>
+        </li>
+    </ul>
+{% endblock %}

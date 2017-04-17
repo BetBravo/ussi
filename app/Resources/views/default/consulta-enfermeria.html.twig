@@ -49,10 +49,76 @@
 {% endblock %}
 {% block body %}
     <div class="row">
-        <div class="col-md-4 col-sm-4 col-xs-12">
+        <div class="col-md-3 col-sm-3 col-xs-12">
             <div class="x_panel tile fixed_height_320">
                 <div class="x_title">
-                    <h2>Gestionar Consultas</h2>
+                    <h2>Datos Vitales</h2>
+                    <ul class="nav navbar-right panel_toolbox">
+                        <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                        </li>                                    
+                        <li><a class="close-link"><i class="fa fa-close"></i></a>
+                        </li>
+                    </ul>
+                    <div class="clearfix"></div>
+                </div>
+                <div class="x_content">
+                    <div class="col-md-12">
+                        <div class="thumbnail">
+                            <div class="image view view-first">
+                                <a href="{{ path('consulta_new') }}"> 
+                                    <img style="width: 100%; display: block;" src="{{ asset('bundles/app/seguridad/images/11.jpg')}}" alt="image">
+                                    <div class="mask">
+                                        <p>Datos Vitales</p>                                               
+                                    </div>
+                                </a> 
+                            </div>
+                            <div class="caption">
+                                <p><a href="{{ path('consulta_new') }}"> Gestionar Datos Vitales </a>  </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-3 col-sm-3 col-xs-12">
+            <div class="x_panel tile fixed_height_320">
+                <div class="x_title">
+                    <h2>Medicamentos</h2>
+                    <ul class="nav navbar-right panel_toolbox">
+                        <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                        </li>                                    
+                        <li><a class="close-link"><i class="fa fa-close"></i></a>
+                        </li>
+                    </ul>
+                    <div class="clearfix"></div>
+                </div>
+                <div class="x_content">
+
+                    <div class="col-md-12">
+                        <div class="thumbnail">
+
+                            <div class="image view view-first">
+                                <a href="{{ path('consulta_new') }}"> 
+                                    <img style="width: 100%; display: block;" src="{{ asset('bundles/app/seguridad/images/13.jpg')}}" alt="image">
+                                    <div class="mask">
+                                        <p>Medicamentos</p>                                               
+                                    </div>
+                                </a> 
+                            </div>
+                            <div class="caption">
+                                <p><a href="{{ path('consulta_new') }}">  Gestionar Medicamentos  </a>  </p>
+                            </div>
+                        </div>
+                    </div>    
+
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3 col-sm-3 col-xs-12">
+            <div class="x_panel tile fixed_height_320">
+                <div class="x_title">
+                    <h2>Insumos</h2>
                     <ul class="nav navbar-right panel_toolbox">
                         <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
                         </li>                                    
@@ -70,12 +136,12 @@
                                 <a href="{{ path('consulta_new') }}"> 
                                     <img style="width: 100%; display: block;" src="{{ asset('bundles/app/seguridad/images/14.jpg')}}" alt="image">
                                     <div class="mask">
-                                        <p>Gestionar Consultas</p>                                               
+                                        <p>Insumos</p>                                               
                                     </div>
                                 </a> 
                             </div>
                             <div class="caption">
-                                <p><a href="{{ path('consulta_new') }}">  Gestionar Consultas  </a>  </p>
+                                <p><a href="{{ path('consulta_new') }}">  Gestionar Insumos  </a>  </p>
                             </div>
                         </div>
                     </div>    
@@ -83,10 +149,10 @@
                 </div>
             </div>
         </div>
-        <div class="col-md-4 col-sm-4 col-xs-12">
+        <div class="col-md-3 col-sm-3 col-xs-12">
             <div class="x_panel tile fixed_height_320">
                 <div class="x_title">
-                    <h2>Gestionar Expedientes</h2>
+                    <h2>Observaciones</h2>
                     <ul class="nav navbar-right panel_toolbox">
                         <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
                         </li>                                    
@@ -96,59 +162,29 @@
                     <div class="clearfix"></div>
                 </div>
                 <div class="x_content">
+
                     <div class="col-md-12">
                         <div class="thumbnail">
+
                             <div class="image view view-first">
-                                <a href="{{ path('paciente_index') }}"> 
-                                    <img style="width: 100%; display: block;" src="{{ asset('bundles/app/seguridad/images/1.jpg')}}" alt="image">
+                                <a href="{{ path('consulta_new') }}"> 
+                                    <img style="width: 100%; display: block;" src="{{ asset('bundles/app/seguridad/images/12.jpg')}}" alt="image">
                                     <div class="mask">
-                                        <p>Gestionar Expedientes</p>                                                
+                                        <p>Observaciones</p>                                               
                                     </div>
                                 </a> 
                             </div>
                             <div class="caption">
-                                <p> <a href="{{ path('paciente_index') }}"> Gestionar Expedientes </a>  </p>
+                                <p><a href="{{ path('consulta_new') }}">  Gestionar Observaciones  </a>  </p>
                             </div>
                         </div>
                     </div>    
-                    <br>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-4 col-sm-4 col-xs-12">
-            <div class="x_panel tile fixed_height_320">
-                <div class="x_title">
-                    <h2>Asignar CItas</h2>
-                    <ul class="nav navbar-right panel_toolbox">
-                        <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
-                        </li>                                    
-                        <li><a class="close-link"><i class="fa fa-close"></i></a>
-                        </li>
-                    </ul>
-                    <div class="clearfix"></div>
-                </div>
-                <div class="x_content">
-                    <div class="col-md-12">
-                        <div class="thumbnail">
-                            <div class="image view view-first">
-                                <a href="{{ path('cita_new') }}">
-                                    <img style="width: 100%; display: block;" src="{{ asset('bundles/app/seguridad/images/13.jpg')}}" alt="image">
-                                    <div class="mask">
-                                        <p> Asignar Citas</p>                                                
-                                    </div>
-                                </a> 
-                            </div>
-                            <div class="caption">
-                                <p> <a href="{{ path('cita_new') }}"> Asignar Citas </a>  </p>
-                            </div>
-                        </div>
-                    </div>                                   
-
-                    <br>
 
                 </div>
             </div>
         </div>
+
+
     </div>
     <div class="row">
         <div class="col-md-12 col-sm-12 col-xs-12">
@@ -156,10 +192,8 @@
                 <div class="col-md-12 col-sm-12 col-xs-12">
                     <div class="x_panel">
                         <div class="x_title">
-                            <h2>Lista de Pacientes <small>
-                                    {% if (esperandos!=null) %}
-                                        <button type="button" class="btn btn-success btn-sm" onclick='window.location.href = "esperando/procesar"'>Llamar Paciente</button>
-                                    {% endif %}
+                            <h2>Historial <small>
+
                                 </small></h2>
                             <ul class="nav navbar-right panel_toolbox">
                                 <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
@@ -187,57 +221,7 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            {% for esperando in esperandos %}
-                                                {% if (esperando.status=='activo') %}
-                                                    <tr>
-                                                        <td>{{  esperando.posicion  }} </td>
-                                                        <td>
-                                                            <span class="image">
-                                                                <img src="{{ asset('uploads/fotos/')}}{{esperando.paciente.persona.foto}}" alt="{{esperando.paciente.persona.cedula}}" class="img-rounded" height="50" width="50">
-                                                            </span>
-                                                        </td>
-                                                        <td>{{ esperando.paciente.persona.nacionalidad }} - {{ esperando.paciente.persona.cedula }}</td>
-                                                        <td>{{ esperando.paciente.persona.primerApellido }} {{ esperando.paciente.persona.primerNombre }}</td>
-                                                        <td>{% if esperando.fechaRegistro %}{{ esperando.fechaRegistro|date('Y-m-d H:i:s') }}{% endif %}</td>
-                                                        <td>
-                                                            {% if esperando.status=='atendido' %}                                                        
-                                                                <button type="button" class="btn btn-success" data-toggle="tooltip" data-placement="top" title="" data-original-title="{{esperando.status |title}}">
-                                                                    <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
-                                                                </button>
-                                                            {% elseif esperando.status=='abandono' %}
-                                                                <button type="button" class="btn btn-danger" data-toggle="tooltip" data-placement="top" title="" data-original-title="{{esperando.status |title}}">
-                                                                    <span class="glyphicon glyphicon-trash" aria-hidden="true" ></span>                            
-                                                                </button>
-                                                            {% elseif  esperando.status=='procesando' %}
-                                                                <button type="button" class="btn btn-primary" data-toggle="tooltip" data-placement="top" title="" data-original-title="{{esperando.status |title}}">
-                                                                    <span class="glyphicon glyphicon-time" aria-hidden="true"></span>
-                                                                </button>                           
-                                                            {% elseif esperando.status=='cancelado' %}
-                                                                <button type="button" class="btn btn-warning" data-toggle="tooltip" data-placement="top" title="" data-original-title="{{esperando.status |title}}"> 
-                                                                    <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
-                                                                </button>
-                                                            {% else %}    
-                                                                <button type="button" class="btn btn-success" data-toggle="tooltip" data-placement="top" title="" data-original-title="{{esperando.status |title}}"> 
-                                                                    <span class="glyphicon glyphicon-fire" aria-hidden="true"></span>
-                                                                </button>
-                                                            {% endif %}
-                                                        </td>
-                                                        <td class="project_progress">    
-                                                            {% set valor = (esperando.penalizacion *100/ penalizacion)%}                           
-                                                            {% set color = 'bg-red'-%}
-                                                            {% if(valor<50) %}
-                                                                {% set color = 'bg-green' %}
-                                                            {% endif%}
-                                                            <div class="progress progress_sm right">
-                                                                <div class="progress-bar {{color}}" role="progressbar" data-transitiongoal="{{valor}}" ></div>
-                                                            </div>
-                                                            <small>    {{ esperando.penalizacion }}  - de {{ penalizacion}} Oportunidades </small>
-                                                        </td>
-                                                        <td>{{ esperando.especialidad.nombre }}</td>
-                                                        <td>{% if esperando.profesional != null %} {{ esperando.profesional.persona.primerApellido }} {{ esperando.profesional.persona.primerNombre }}{% endif %}</td>                                                                
-                                                    </tr>
-                                                {% endif %}
-                                            {% endfor %}
+
                                         </tbody>
                                     </table>
                                 </div>
@@ -249,6 +233,7 @@
             </div>
         </div>
     </div>
+
 {% endblock %}
 {% block javascripts %}
     <!-- Datatables -->
@@ -261,14 +246,14 @@
     <!-- Push -->
     <script src="{{ asset('bundles/app/vendors/push/push.min.js')}}"></script> 
     <script>
-                                            function reloadPagina() {
-                                                location.reload();
-                                            }
+        function reloadPagina() {
+            location.reload();
+        }
 
-                                            $(document).ready(function () {
-                                                $('#datatable-fixed-header').DataTable({fixedHeader: true});
-                                                setInterval(reloadPagina, 60000);
-                                            });
+        $(document).ready(function () {
+            $('#datatable-fixed-header').DataTable({fixedHeader: true});
+            setInterval(reloadPagina, 60000);
+        });
     </script>
 {% endblock %}
 

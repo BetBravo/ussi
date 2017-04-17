@@ -1,0 +1,40 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Insumo</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ insumo.id }}</td>
+            </tr>
+            <tr>
+                <th>Nombre</th>
+                <td>{{ insumo.nombre }}</td>
+            </tr>
+            <tr>
+                <th>Stock</th>
+                <td>{{ insumo.stock }}</td>
+            </tr>
+            <tr>
+                <th>Disponible</th>
+                <td>{{ insumo.disponible }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('insumo_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('insumo_edit', { 'id': insumo.id }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}

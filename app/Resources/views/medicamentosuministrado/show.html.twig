@@ -1,0 +1,40 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Medicamentosuministrado</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ medicamentoSuministrado.id }}</td>
+            </tr>
+            <tr>
+                <th>Cantidad</th>
+                <td>{{ medicamentoSuministrado.cantidad }}</td>
+            </tr>
+            <tr>
+                <th>Viaadministracion</th>
+                <td>{{ medicamentoSuministrado.viaAdministracion }}</td>
+            </tr>
+            <tr>
+                <th>Fecha</th>
+                <td>{% if medicamentoSuministrado.fecha %}{{ medicamentoSuministrado.fecha|date('Y-m-d H:i:s') }}{% endif %}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('medicamentosuministrado_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('medicamentosuministrado_edit', { 'id': medicamentoSuministrado.id }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}

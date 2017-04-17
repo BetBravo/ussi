@@ -1,0 +1,43 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Medicamentosuministrados list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Cantidad</th>
+                <th>Viaadministracion</th>
+                <th>Fecha</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for medicamentoSuministrado in medicamentoSuministrados %}
+            <tr>
+                <td><a href="{{ path('medicamentosuministrado_show', { 'id': medicamentoSuministrado.id }) }}">{{ medicamentoSuministrado.id }}</a></td>
+                <td>{{ medicamentoSuministrado.cantidad }}</td>
+                <td>{{ medicamentoSuministrado.viaAdministracion }}</td>
+                <td>{% if medicamentoSuministrado.fecha %}{{ medicamentoSuministrado.fecha|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('medicamentosuministrado_show', { 'id': medicamentoSuministrado.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('medicamentosuministrado_edit', { 'id': medicamentoSuministrado.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('medicamentosuministrado_new') }}">Create a new medicamentoSuministrado</a>
+        </li>
+    </ul>
+{% endblock %}

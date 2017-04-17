@@ -52,7 +52,7 @@
         <div class="col-md-4 col-sm-4 col-xs-12">
             <div class="x_panel tile fixed_height_320">
                 <div class="x_title">
-                    <h2>Gestionar Consultas</h2>
+                    <h2>Consulta</h2>
                     <ul class="nav navbar-right panel_toolbox">
                         <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
                         </li>                                    
@@ -62,28 +62,26 @@
                     <div class="clearfix"></div>
                 </div>
                 <div class="x_content">
-
                     <div class="col-md-12">
                         <div class="thumbnail">
-
                             <div class="image view view-first">
                                 <a href="{{ path('consulta_new') }}"> 
-                                    <img style="width: 100%; display: block;" src="{{ asset('bundles/app/seguridad/images/14.jpg')}}" alt="image">
+                                    <img style="width: 100%; display: block;" src="{{ asset('bundles/app/seguridad/images/11.jpg')}}" alt="image">
                                     <div class="mask">
-                                        <p>Gestionar Consultas</p>                                               
+                                        <p>Consulta</p>                                               
                                     </div>
                                 </a> 
                             </div>
+
                             <div class="caption">
-                                <p><a href="{{ path('consulta_new') }}">  Gestionar Consultas  </a>  </p>
+                                <p><button type="button" id='mi-modal' class="btn btn-primary" data-toggle="modal" data-target=".bs-example-modal-lg">Gestionar</button> </p>
                             </div>
                         </div>
-                    </div>    
-
+                    </div>
                 </div>
             </div>
         </div>
-        <div class="col-md-4 col-sm-4 col-xs-12">
+ <div class="col-md-4 col-sm-4 col-xs-12">
             <div class="x_panel tile fixed_height_320">
                 <div class="x_title">
                     <h2>Gestionar Expedientes</h2>
@@ -115,10 +113,10 @@
                 </div>
             </div>
         </div>
-        <div class="col-md-4 col-sm-4 col-xs-12">
+             <div class="col-md-4 col-sm-4 col-xs-12">
             <div class="x_panel tile fixed_height_320">
                 <div class="x_title">
-                    <h2>Asignar CItas</h2>
+                    <h2>Asignar Citas</h2>
                     <ul class="nav navbar-right panel_toolbox">
                         <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
                         </li>                                    
@@ -151,16 +149,14 @@
         </div>
     </div>
     <div class="row">
-        <div class="col-md-12 col-sm-12 col-xs-12">
+        <div class="col-md-6 col-sm-6 col-xs-12">
             <div class="row">
                 <div class="col-md-12 col-sm-12 col-xs-12">
                     <div class="x_panel">
                         <div class="x_title">
-                            <h2>Lista de Pacientes <small>
-                                    {% if (esperandos!=null) %}
+                            <h2>Lista de Espera <small> </small>{% if (esperandos!=null) %}
                                         <button type="button" class="btn btn-success btn-sm" onclick='window.location.href = "esperando/procesar"'>Llamar Paciente</button>
-                                    {% endif %}
-                                </small></h2>
+                                    {% endif %}</h2>
                             <ul class="nav navbar-right panel_toolbox">
                                 <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
                                 </li>                                            
@@ -172,18 +168,13 @@
                         <div class="x_content">
                             <div class="dashboard-widget-content">
                                 <div class="col-md-12 hidden-small">
-                                    <table id="datatable-fixed-header" class="table table-striped table-bordered">
+                                    <table id="datatable-responsive" class="table table-striped table-bordered dt-responsive nowrap">
                                         <thead>
                                             <tr>
                                                 <th>#</th>
                                                 <th>Foto</th>
                                                 <th>Cédula</th>
                                                 <th>Paciente</th>
-                                                <th>Fecha</th>
-                                                <th>Status</th>
-                                                <th>Penalización</th>                                                            
-                                                <th>Especialidad</th>
-                                                <th>Médico</th>                                                            
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -197,47 +188,11 @@
                                                             </span>
                                                         </td>
                                                         <td>{{ esperando.paciente.persona.nacionalidad }} - {{ esperando.paciente.persona.cedula }}</td>
-                                                        <td>{{ esperando.paciente.persona.primerApellido }} {{ esperando.paciente.persona.primerNombre }}</td>
-                                                        <td>{% if esperando.fechaRegistro %}{{ esperando.fechaRegistro|date('Y-m-d H:i:s') }}{% endif %}</td>
-                                                        <td>
-                                                            {% if esperando.status=='atendido' %}                                                        
-                                                                <button type="button" class="btn btn-success" data-toggle="tooltip" data-placement="top" title="" data-original-title="{{esperando.status |title}}">
-                                                                    <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
-                                                                </button>
-                                                            {% elseif esperando.status=='abandono' %}
-                                                                <button type="button" class="btn btn-danger" data-toggle="tooltip" data-placement="top" title="" data-original-title="{{esperando.status |title}}">
-                                                                    <span class="glyphicon glyphicon-trash" aria-hidden="true" ></span>                            
-                                                                </button>
-                                                            {% elseif  esperando.status=='procesando' %}
-                                                                <button type="button" class="btn btn-primary" data-toggle="tooltip" data-placement="top" title="" data-original-title="{{esperando.status |title}}">
-                                                                    <span class="glyphicon glyphicon-time" aria-hidden="true"></span>
-                                                                </button>                           
-                                                            {% elseif esperando.status=='cancelado' %}
-                                                                <button type="button" class="btn btn-warning" data-toggle="tooltip" data-placement="top" title="" data-original-title="{{esperando.status |title}}"> 
-                                                                    <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
-                                                                </button>
-                                                            {% else %}    
-                                                                <button type="button" class="btn btn-success" data-toggle="tooltip" data-placement="top" title="" data-original-title="{{esperando.status |title}}"> 
-                                                                    <span class="glyphicon glyphicon-fire" aria-hidden="true"></span>
-                                                                </button>
-                                                            {% endif %}
-                                                        </td>
-                                                        <td class="project_progress">    
-                                                            {% set valor = (esperando.penalizacion *100/ penalizacion)%}                           
-                                                            {% set color = 'bg-red'-%}
-                                                            {% if(valor<50) %}
-                                                                {% set color = 'bg-green' %}
-                                                            {% endif%}
-                                                            <div class="progress progress_sm right">
-                                                                <div class="progress-bar {{color}}" role="progressbar" data-transitiongoal="{{valor}}" ></div>
-                                                            </div>
-                                                            <small>    {{ esperando.penalizacion }}  - de {{ penalizacion}} Oportunidades </small>
-                                                        </td>
-                                                        <td>{{ esperando.especialidad.nombre }}</td>
-                                                        <td>{% if esperando.profesional != null %} {{ esperando.profesional.persona.primerApellido }} {{ esperando.profesional.persona.primerNombre }}{% endif %}</td>                                                                
+                                                        <td>{{ esperando.paciente.persona.primerApellido }} {{ esperando.paciente.persona.primerNombre }}</td>                                                                                                                                                                       
                                                     </tr>
                                                 {% endif %}
                                             {% endfor %}
+
                                         </tbody>
                                     </table>
                                 </div>
@@ -246,9 +201,97 @@
                         </div>
                     </div>
                 </div>
+
+
+            </div>
+        </div>
+        <div class="col-md-6 col-sm-6 col-xs-12">
+            <div class="row">
+                <div class="col-md-12 col-sm-12 col-xs-12">
+                    <div class="x_panel">
+                        <div class="x_title">
+                            <h2>Pacientes en Observación<small>
+
+                                </small></h2>
+                            <ul class="nav navbar-right panel_toolbox">
+                                <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                                </li>                                            
+                                <li><a class="close-link"><i class="fa fa-close"></i></a>
+                                </li>
+                            </ul>
+                            <div class="clearfix"></div>
+                        </div>
+                        <div class="x_content">
+                            <div class="dashboard-widget-content">
+                                <div class="col-md-12 hidden-small">
+                                    <table id="datatable-responsive" class="table table-striped table-bordered dt-responsive nowrap">
+                                        <thead>
+                                            <tr>
+                                                <th>#</th>
+                                                <th>Foto</th>
+                                                <th>Cédula</th>
+                                                <th>Paciente</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+
+
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <div id="world-map-gdp" class="col-md-8 col-sm-12 col-xs-12" style="height:230px;"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
             </div>
         </div>
     </div>
+    <br>
+    <!-- Large modal -->   
+    <div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span>
+                    </button>
+                    <h4 class="modal-title" id="myModalLabel">Consultar Paciente</h4>
+                </div>
+                <div class="modal-body">
+                    {{ form_start(form, { 'attr': {'id':'paciente','class': 'form-horizontal form-label-left'} }) }} 
+                    {{ form_errors(form) }}
+                    <div class="form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="nacionalidad">{{ form_label(form.nacionalidad) }} <span class="required">*</span></label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                            {{ form_errors(form.nacionalidad) }}                
+                            {{form_widget(form.nacionalidad,{ 'attr': {'class': 'form-control col-md-7 col-xs-12'} } ) }}                
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="cedula">{{ form_label(form.cedula) }} <span class="required">*</span></label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                            {{ form_errors(form.cedula) }}                
+                            {{form_widget(form.cedula,{ 'attr': {'class': 'form-control col-md-7 col-xs-12'} } ) }}                
+                        </div>
+                    </div>
+
+
+
+
+                    {{ form_end(form) }} 
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+                    <button type="button"  id='miBoton' class="btn btn-primary">Consultar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
 {% endblock %}
 {% block javascripts %}
     <!-- Datatables -->
@@ -261,14 +304,19 @@
     <!-- Push -->
     <script src="{{ asset('bundles/app/vendors/push/push.min.js')}}"></script> 
     <script>
-                                            function reloadPagina() {
-                                                location.reload();
-                                            }
+        function reloadPagina() {
+            location.reload();
+        }
 
-                                            $(document).ready(function () {
-                                                $('#datatable-fixed-header').DataTable({fixedHeader: true});
-                                                setInterval(reloadPagina, 60000);
-                                            });
-    </script>
+        $(document).ready(function () {
+            $('#datatable-fixed-header').DataTable({fixedHeader: true});
+            setInterval(reloadPagina, 60000);
+            //$("#mi-modal").hide();
+
+            $("#form_especialidad").val("Enfermeria");
+            $(".medico").hide();
+            $("#miBoton").click(function () {
+                $("#paciente").submit();
+            });
+        });</script>
 {% endblock %}
-

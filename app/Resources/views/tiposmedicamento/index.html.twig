@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Tiposmedicamentos list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nombre</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for tiposMedicamento in tiposMedicamentos %}
+            <tr>
+                <td><a href="{{ path('tiposmedicamento_show', { 'id': tiposMedicamento.id }) }}">{{ tiposMedicamento.id }}</a></td>
+                <td>{{ tiposMedicamento.nombre }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('tiposmedicamento_show', { 'id': tiposMedicamento.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('tiposmedicamento_edit', { 'id': tiposMedicamento.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('tiposmedicamento_new') }}">Create a new tiposMedicamento</a>
+        </li>
+    </ul>
+{% endblock %}

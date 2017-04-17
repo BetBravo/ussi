@@ -1,0 +1,43 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Medicamentos list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Principioactivo</th>
+                <th>Stock</th>
+                <th>Disponible</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for medicamento in medicamentos %}
+            <tr>
+                <td><a href="{{ path('medicamento_show', { 'id': medicamento.id }) }}">{{ medicamento.id }}</a></td>
+                <td>{{ medicamento.principioActivo }}</td>
+                <td>{{ medicamento.stock }}</td>
+                <td>{{ medicamento.disponible }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('medicamento_show', { 'id': medicamento.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('medicamento_edit', { 'id': medicamento.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('medicamento_new') }}">Create a new medicamento</a>
+        </li>
+    </ul>
+{% endblock %}

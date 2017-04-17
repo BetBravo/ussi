@@ -1,0 +1,43 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Observacionsuministradas list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Descripcion</th>
+                <th>Tipo</th>
+                <th>Fecha</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for observacionSuministrada in observacionSuministradas %}
+            <tr>
+                <td><a href="{{ path('observacionsuministrada_show', { 'id': observacionSuministrada.id }) }}">{{ observacionSuministrada.id }}</a></td>
+                <td>{{ observacionSuministrada.descripcion }}</td>
+                <td>{{ observacionSuministrada.tipo }}</td>
+                <td>{% if observacionSuministrada.fecha %}{{ observacionSuministrada.fecha|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('observacionsuministrada_show', { 'id': observacionSuministrada.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('observacionsuministrada_edit', { 'id': observacionSuministrada.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('observacionsuministrada_new') }}">Create a new observacionSuministrada</a>
+        </li>
+    </ul>
+{% endblock %}

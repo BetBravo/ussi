@@ -360,6 +360,72 @@ class CitaController extends Controller {
     }
 
     /**
+     * Creates a consulta entity.
+     *
+     * @Route("/consulta-enfermeria", name="cita_consulta_enfermeria")
+     * @Method({"GET", "POST"})
+     */
+    public function consultaEnfermeriaAction(Request $request) {
+        $hoy = new \DateTime('now');
+        $hoy->setTime(0, 0, 0);
+        $profesionalDisponible = null;
+        $doctor = '';
+        $observacion = '';
+        $maximoConsulta = null;
+        $cola = null;
+
+        //Parametrización de la aplicacion por BD
+        $em = $this->getDoctrine()->getManager();
+        $configuracion = $em->getRepository('AppBundle:Configuracion')->findAll();
+
+        if ($hoy != $configuracion[0]->getServicioActualizado()) {
+            $this->setServicio();
+        }
+
+        $misServicos = $this->disponibleServicio();
+
+
+        //Creamos el formulario de Consulta
+        $form = $this->createFormBuilder()
+                ->setAction($this->generateUrl('cita_consulta_enfermeria'))
+                ->add('nacionalidad', ChoiceType::class, array(
+                    'choices' => array('Venezolana' => 'V', 'Extranjera' => 'E'),
+                    'required' => true,
+                    'label' => 'Nacionalidad',
+                    'attr' => array('placeholder' => 'Nacionalidad')
+                ))
+                ->add('cedula', TextType::class, array(
+                    'label' => 'Cédula / Pasaporte',
+                    'required' => true,
+                    'attr' => array('placeholder' => 'Número de Cédula / Pasaporte'),
+                ))
+                ->getForm();
+        $form->handleRequest($request);
+
+
+        if ($request->isMethod('POST')) {
+            $var = $request->request->get('form');
+            $persona = $em->getRepository('AppBundle:Persona')->findOneBy(
+                    array(
+                        'nacionalidad' => $var['nacionalidad'],
+                        'cedula' => $var['cedula']
+                    )
+            );
+
+            if ($persona) {
+                $paciente = $em->getRepository('AppBundle:Paciente')->findOneBy(array('persona' => $persona));
+            } else {
+                return $this->redirectToRoute('paciente_new');
+            }
+        }
+        
+
+        return $this->render('default/consulta-enfermeria.html.twig', array(
+                    
+        ));
+    }
+
+    /**
      * Finds and displays a citum entity.
      *
      * @Route("/servicios", name="cita_servicios")
